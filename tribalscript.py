@@ -16,7 +16,7 @@ nomes = ["Lanceiros", "Espadachins", "Barbaros", "Exploradores", "Cavalaria leve
 def atacar(arq):
     with r.Session() as c:
         r.get("https://tribalwars.com.br", )
-        info = dict(user="furiousgod", password="b23524625913df6afbb414955e5ef1f4425769ba", sso="0")
+        info = dict(user="user", password="pass", sso="0")
         page = c.post("https://www.tribalwars.com.br/index.php?action=login&server_br78", data=info)
         time.sleep(1)
 
