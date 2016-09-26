@@ -94,7 +94,7 @@ def atacar(arq):
                            headers={
                                "Referer": 'https://br78.tribalwars.com.br/game.php?village=1411&screen=place&try=confirm'})
             print("Mandando ataque em " + x + "|" + y)
-            time.sleep(1)
+            time.sleep(1),
 
 
 while(1):
@@ -137,6 +137,8 @@ while(1):
         print("Nobre: -9")
     elif "cls" in linha:
         limpar()
+    elif "exit" in linha:
+        exit(0)
 
 
 
