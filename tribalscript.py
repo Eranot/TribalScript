@@ -2,6 +2,24 @@ import requests as r
 import time
 import re
 
+def esperarAte(hora, minuto):
+    h = int(time.strftime("%H"))
+    m = int(time.strftime("%M"))
+
+    if (h > hora):
+        horas = (24 - h) + hora
+    else:
+        horas = (hora - h)
+
+    if (m > minuto):
+        minutos = 60 - m + minuto
+    else:
+        minutos = minuto - m
+
+    segundos = horas * 60 * 60 + minutos * 60 - int(time.strftime("%S"))
+    print "Esperando: ", horas, ":", minutos, " ou ", segundos, " segundos"
+    time.sleep(segundos)
+
 def limpar():
     import os
     os.system("cls")
@@ -93,7 +111,7 @@ def atacar(arq):
                            data=info2,
                            headers={
                                "Referer": 'https://br78.tribalwars.com.br/game.php?village=1411&screen=place&try=confirm'})
-            print("Mandando ataque em " + x + "|" + y)
+            print("Mandando ataque em " + x + "|" + y),
             time.sleep(1),
 
 
@@ -122,7 +140,15 @@ while(1):
         if op != 's' and op !=  'S':
             continue
 
+        if("-t" in linha):
+            tempo = re.search(r"\-t ([0-9]+)\:([0-9]+)", linha).groups()
+            print "achou"
+            esperarAte(int(tempo[0]), int(tempo[1]))
+
+
         atacar(arq)
+        print("\n"),
+        tropas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
     elif "lista" in linha:
         print("Lanceiro: -0")
